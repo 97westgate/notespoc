@@ -1,7 +1,7 @@
 from dotenv import load_dotenv
 import os
 import openai
-from prompts import CATEGORIZATION_PROMPT, SYSTEM_PROMPT
+from largeprompts import CATEGORIZATION_PROMPT, SYSTEM_PROMPT
 import logging
 from datetime import datetime
 
