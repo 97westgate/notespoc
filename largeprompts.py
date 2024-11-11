@@ -1,58 +1,52 @@
-CATEGORIZATION_PROMPT = """You are analyzing a large collection of personal/professional notes. Please provide your analysis in JSON format.
+CATEGORIZATION_PROMPT = """Analyze each bullet point as follows. If a bullet contains multiple distinct ideas (indicated by emojis, new sentences, or clear topic shifts), please separate and analyze them individually:
 
-1. Initial Classification:
-   - Is this an actionable item or reference material?
-   - Are there multiple distinct ideas? (Split if: new emoji, new checkbox, topic shift, audience change)
-   - What's the primary intent? (Project/Task/Reference/Idea/Goal)
+1. First, separate distinct ideas:
+   - New ideas often start with emojis, bullets, or checkboxes
+   - A shift in topic or audience indicates a new idea
+   - Different project types or goals suggest separate items
 
-2. For each distinct idea, analyze efficiently:
-   - Quick Stats:
-      * Urgency: NOW/SOON/LATER/REFERENCE
-      * Complexity: SIMPLE/MEDIUM/COMPLEX
-      * Dependencies: STANDALONE/NEEDS-PREREQUISITES
-   
-   - Project Context:
-      * Domain: Tech/Business/Creative/Marketing/Research/Personal/Content/Social/Other
-      * Nature: Development/Design/Analysis/Planning/Content/Growth/Other
-      * Required Resources: ["key tools", "platforms", "skills needed"]
-   
-   - Implementation:
-      * Estimated Timeline: "duration"
-      * Key Risks: ["major concerns"]
-      * Next Actions: ["immediate next steps"]
-
-3. Pattern Recognition:
-   - Related to previous notes? Link by theme/project
-   - Part of larger initiative?
-   - Recurring theme?
+2. Then for each distinct idea, analyze:
+   - Category: Either PROJECT, INTENTION, TODO, TASK, THOUGHT, or QUOTE
+   - Project Type (if applicable):
+      - Domain: Tech/Business/Creative/Marketing/Research/Personal/Content/Social/Other
+      - Nature: Development/Design/Analysis/Planning/Documentation/Infrastructure/Process/Other
+      - Stack: Infer relevant technologies, tools, or methodologies needed
+   - Impact Level: HIGH, MEDIUM, or LOW based on:
+      - Potential value to stakeholders
+      - Scope of influence
+      - Long-term effects
+      - Strategic importance
+   - Impact Reasoning: Brief explanation of why this impact level was chosen
+   - Time Estimation:
+      - Duration: Estimated time to complete (e.g., "2 hours", "3 days", "2 weeks", "1 month")
+      - Confidence: HIGH/MEDIUM/LOW confidence in this estimate
+      - Rationale: Brief explanation of the time estimate
+   - If it's a TODO, list any subtasks
 
 Format your response as a JSON object with the following structure:
 {{
     "items": [
         {{
-            "originalText": "full text",
-            "ideas": [
+            "originalText": "full original text",
+            "separatedIdeas": [
                 {{
                     "text": "distinct idea",
-                    "quickStats": {{
-                        "urgency": "level",
-                        "complexity": "level",
-                        "dependencies": "type"
+                    "category": "category",
+                    "projectType": {{
+                        "domain": "domain type",
+                        "nature": "project nature",
+                        "stack": ["inferred technologies or methodologies"]
                     }},
-                    "context": {{
-                        "domain": "type",
-                        "nature": "type",
-                        "resources": []
+                    "impact": {{
+                        "level": "HIGH/MEDIUM/LOW",
+                        "reasoning": "brief explanation"
                     }},
-                    "execution": {{
-                        "timeline": "estimate",
-                        "risks": [],
-                        "nextActions": []
+                    "timeEstimate": {{
+                        "duration": "estimated time",
+                        "confidence": "HIGH/MEDIUM/LOW",
+                        "rationale": "brief explanation"
                     }},
-                    "patterns": {{
-                        "relatedThemes": [],
-                        "initiative": "name if part of larger project"
-                    }}
+                    "subtasks": []
                 }}
             ]
         }}
@@ -62,4 +56,4 @@ Format your response as a JSON object with the following structure:
 Notes to analyze:
 {}"""
 
-SYSTEM_PROMPT = "You are an efficient note analysis system that quickly identifies patterns, separates distinct ideas, and provides actionable insights across large collections of notes. You will respond in JSON format following the specified structure."
+SYSTEM_PROMPT = "You are an analytical assistant that evaluates text to identify distinct ideas, categorize them appropriately, and provide realistic assessments of impact and timing. You will respond in JSON format following the specified structure."
