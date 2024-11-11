@@ -6,10 +6,10 @@ CATEGORIZATION_PROMPT = """Analyze and categorize each bullet point as follows:
    - Long-term effects
    - Strategic importance
 3. Impact Reasoning: Brief explanation of why this impact level was chosen
-4. Effort Assessment:
-   - Size: XS (hours), S (days), M (weeks), L (months), XL (quarters)
-   - Complexity: Simple, Moderate, Complex
-   - Dependencies: Any prerequisite tasks or external dependencies
+4. Time Estimation:
+   - Duration: Estimated time to complete (e.g., "2 hours", "3 days", "2 weeks", "1 month")
+   - Confidence: HIGH/MEDIUM/LOW confidence in this estimate
+   - Rationale: Brief explanation of the time estimate
 5. If it's a TODO, list any subtasks
 
 Format the response as JSON with structure:
@@ -22,10 +22,10 @@ Format the response as JSON with structure:
                 "level": "HIGH/MEDIUM/LOW",
                 "reasoning": "brief explanation"
             }},
-            "effort": {{
-                "size": "XS/S/M/L/XL",
-                "complexity": "Simple/Moderate/Complex",
-                "dependencies": ["list of dependencies or empty array"]
+            "timeEstimate": {{
+                "duration": "estimated time",
+                "confidence": "HIGH/MEDIUM/LOW",
+                "rationale": "brief explanation"
             }},
             "subtasks": [] // only for TODOs
         }}
@@ -35,4 +35,4 @@ Format the response as JSON with structure:
 Bullets:
 {}"""
 
-SYSTEM_PROMPT = "You are an analytical assistant that evaluates text for strategic importance, business impact, and implementation complexity."
+SYSTEM_PROMPT = "You are an analytical assistant that evaluates text for strategic importance, business impact, and provides realistic time estimations based on common software development and business project timelines."
