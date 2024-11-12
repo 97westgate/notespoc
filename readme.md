@@ -24,6 +24,7 @@ An open-source system for processing and analyzing notes, quotes, and other text
 
 ### Inspiration
 - [Flowy](https://github.com/suyash/flowy) - Workflowy-style note organization
+- [Workflowy](https://workflowy.com/#/29d58ad2384d) - Workflowy
 
 ## Technical Debt
 1. Token limit handling for OpenAI API calls
@@ -44,4 +45,3 @@ An open-source system for processing and analyzing notes, quotes, and other text
 1. Install dependencies
 2. Set up OpenAI API key
 3. Run the script
-    
