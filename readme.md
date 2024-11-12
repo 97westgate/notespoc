@@ -13,9 +13,10 @@ An open-source system for processing and analyzing notes, quotes, and other text
 ### In Progress
 - [ ] Quote organization and analysis
   - [x] Extract quotes from Apple Notes
-  - [ ] Sort quotes by theme/category
+  - [x] Sort quotes by theme/category
   - [ ] Generate summaries and insights
   - [ ] Handle token limits gracefully
+  - [ ] Notice if notes are improperly categorized within a folder
   
 - [ ] Content Enhancement
   - [ ] Capture images and links from notes
