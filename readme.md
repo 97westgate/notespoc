@@ -16,11 +16,12 @@ An open-source system for processing and analyzing notes, quotes, and other text
   - [x] Sort quotes by theme/category
   - [ ] Generate summaries and insights
   - [ ] Handle token limits gracefully
-  - [ ] Notice if notes are improperly categorized within a folder
   
 - [ ] Content Enhancement
   - [ ] Capture images and links from notes
   - [ ] Handle token limit for OpenAI
+  - [ ] Notice if notes are improperly categorized within a folder
+  - [ ] Add second pass prompt to QC categorization work
 
 
 ### Inspiration
